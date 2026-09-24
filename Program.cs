@@ -24,11 +24,15 @@ class main
     public void AddExpense()
     {
         Console.WriteLine("Enter the ID");
-        int id 
+        int id = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter the Title");
+        string title = Console.ReadLine();
         Console.WriteLine("Enter the category");
+        string category = Console.ReadLine();
         Console.WriteLine("Enter the Amount");
+        double amount = Convert.ToDouble(Console.ReadLine());
         Console.WriteLine("Date");
+
     }
     static void Main(string[] args) 
     {

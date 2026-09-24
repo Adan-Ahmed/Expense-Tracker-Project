@@ -8,7 +8,7 @@ class Expense
     public double Amount { get; set; }
     public DateTime Date { get; set; }
 
-    public Expense(int id, string title, string category, double amount, int date)
+    public Expense(int id, string title, string category, double amount, DateTime date)
     {
         ID = id;
         Title = title;
@@ -16,11 +16,29 @@ class Expense
         Amount = amount;
         Date = date;
     }
+
 }
 
 class main
 {
+    public void AddExpense()
+    {
+        Console.WriteLine("Enter the ID");
+        int id 
+        Console.WriteLine("Enter the Title");
+        Console.WriteLine("Enter the category");
+        Console.WriteLine("Enter the Amount");
+        Console.WriteLine("Date");
+    }
     static void Main(string[] args) 
     {
+        List<Expense> expenses = new List<Expense>();
+        DateTime date = DateTime.Now;
+        Expense exp = new Expense(1, "Lunch", "Food", 500, date);
+        expenses.Add(exp);
+        foreach (Expense e in expenses)
+        {
+            Console.WriteLine($"ID: {e.ID}, Title: {e.Title}, Category: {e.Category}, Amount: {e.Amount}, Date: {e.Date}");
+        }
     }
 }

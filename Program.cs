@@ -35,7 +35,7 @@ class Program
             Console.WriteLine("Enter the Amount");
             if (double.TryParse(Console.ReadLine(), out amount))
             {
-                if (amount >= 0)
+                if (amount > 0)
                 {
                     break;
                 }
@@ -69,8 +69,8 @@ class Program
             Console.WriteLine($"ID: {e.ID}");
             Console.WriteLine($"Title: {e.Title}");
             Console.WriteLine($"Category: {e.Category}");
-            Console.WriteLine($"Amount: {e.Amount}");
-            Console.WriteLine($"Date: {e.Date}");
+            Console.WriteLine($"Amount: {e.Amount:N2}");
+            Console.WriteLine($"Date: {e.Date:dd-MM-yyyy}");
             Console.WriteLine();
         }
     
@@ -88,13 +88,13 @@ class Program
         bool found = false;
         foreach (Expense c in expenses)
         {
-            if(c.Category == category ) 
+            if(string.Equals(c.Category, category, StringComparison.OrdinalIgnoreCase)) 
             {
                 Console.WriteLine($"ID: {c.ID}");
                 Console.WriteLine($"Title: {c.Title}");
                 Console.WriteLine($"Category: {c.Category}");
-                Console.WriteLine($"Amount: {c.Amount}");
-                Console.WriteLine($"Date: {c.Date}");
+                Console.WriteLine($"Amount: {c.Amount:N2}");
+                Console.WriteLine($"Date: {c.Date:dd-MM-yyyy}");
                 Console.WriteLine();
                 found = true;
             }
@@ -160,7 +160,7 @@ class Program
         {
             total += t.Amount;
         }
-        Console.WriteLine($"Total Amount is {total}");
+        Console.WriteLine($"Total Amount is {total:N2}");
 
     }
     public void MonthlyExpense()
@@ -170,12 +170,37 @@ class Program
             Console.WriteLine("No expenses found.");
             return;
         }
-        Console.WriteLine("Enter the month" );
-        int month = Convert.ToInt32(Console.ReadLine());
+
+        int month;
+        while (true)
+        {
+            Console.WriteLine("Enter the month" );
+            if(int.TryParse(Console.ReadLine(), out month))
+            {
+                if(month >= 1 && month <= 12) 
+                {
+                    break;
+                }
+                Console.WriteLine("Month must be between 1 and 12.");
+            }
+            Console.WriteLine("Please enter the Valid Month number");
+        }
         Console.WriteLine();
 
-        Console.WriteLine("Enter the year");
-        int year = Convert.ToInt32(Console.ReadLine());
+        int year;
+        while (true)
+        {
+            Console.WriteLine("Enter the year");
+            if (int.TryParse(Console.ReadLine(), out year))
+            {
+                if (year > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Year must be greater than 0");
+            }
+            Console.WriteLine("Please enter a valid year.");
+        }
         Console.WriteLine();
 
         double Totality = 0;
@@ -186,7 +211,7 @@ class Program
                 Totality += tot.Amount;
             }
         }
-        Console.WriteLine($"Total Monthly expense is {Totality}");
+        Console.WriteLine($"Total Monthly expense is {Totality:N2}");
     }
     static void Main(string[] args) 
     {

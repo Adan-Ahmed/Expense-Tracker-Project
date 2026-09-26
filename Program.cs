@@ -21,7 +21,7 @@ class Program
 {
     
     List<Expense> expenses = new List<Expense>();
-    public void AddExpense()
+    public void AddExpenses()
     {
         Console.WriteLine("Enter the ID");
         int id = Convert.ToInt32(Console.ReadLine());
@@ -31,19 +31,77 @@ class Program
         string category = Console.ReadLine();
         Console.WriteLine("Enter the Amount");
         double amount = Convert.ToDouble(Console.ReadLine());
-        DateTime date = DateTime.Today;
+        DateTime date = DateTime.Now;
 
         //Create object to call constructor
         Expense expen = new Expense(id, title, category, amount, date);
         expenses.Add(expen);
+    }
+    public void ViewExpenses() 
+    {
         foreach (Expense e in expenses)
         {
             Console.WriteLine($"ID: {e.ID}, Title: {e.Title}, Category: {e.Category}, Amount: {e.Amount}, Date: {e.Date}");
         }
+    
     }
     static void Main(string[] args) 
     {
         Program exp = new Program();
-        exp.AddExpense();
+        exp.AddExpenses();
+        exp.ViewExpenses();
+        while (true) 
+        {
+            Console.WriteLine();
+            Console.WriteLine("===== Expense Tracker =====");
+            Console.WriteLine("1. Add Expense");
+            Console.WriteLine("2. View Expenses");
+            Console.WriteLine("3. Search Expense");
+            Console.WriteLine("4. Delete Expense");
+            Console.WriteLine("5. Total Expenses");
+            Console.WriteLine("6. Monthly Expenses");
+            Console.WriteLine("7. Exit");
+
+            int Choice;
+            while (true) 
+            {
+                Console.WriteLine("Enter your choice: ");
+                if(int.TryParse(Console.ReadLine(), out Choice)) 
+                {
+                    break;
+                }
+                Console.WriteLine("Please Enter Valid Number");
+                switch (Choice) 
+                {
+                    case 1:
+                        break;
+
+                    case 2:
+                        break;
+
+                    case 3:
+                        break;
+
+                    case 4:
+                        break;
+
+                    case 5:
+                        break;
+
+                    case 6:
+                        break;
+
+                    case 7:
+                        Console.WriteLine("Thank you for using Expense Tracker.");
+                        return;
+
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
+
+                }
+            }
+            
+        }
     }
 }

@@ -178,56 +178,66 @@ class Program
             Console.WriteLine("6. Monthly Expenses");
             Console.WriteLine("7. Exit");
 
-            Console.WriteLine("Enter your choice: ");
-            int Choice = Convert.ToInt32(Console.ReadLine());
-
-                switch (Choice) 
+            int Choice;
+            while (true)
+            {
+                Console.WriteLine("Enter your choice: ");
+                if (int.TryParse(Console.ReadLine(), out Choice))
                 {
-                    case 1:
+                    if (Choice > 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Initial Choice number Cannot Be Negativee");
+                }
+                Console.WriteLine("Please Enter the valid choice number");
+            }
+            switch (Choice) 
+                {
+                case 1:
                     Console.WriteLine("Add Expense Selected");
                     exp.AddExpenses();
-                        break;
+                break;
 
-                    case 2:
+                case 2:
                     Console.WriteLine();
                     Console.WriteLine("View Expense Selected");
                     exp.ViewExpenses();
-                        break;
+                break;
 
-                    case 3:
-                        Console.WriteLine();
-                        Console.WriteLine("Search Expense Selected");
-                        exp.SearchExpense();
-                    break;
+                case 3:
+                     Console.WriteLine();
+                     Console.WriteLine("Search Expense Selected");
+                     exp.SearchExpense();
+                break;
 
-                    case 4:
-                        Console.WriteLine();
-                        Console.WriteLine("Delete Expense Selected");
-                        exp.DeleteExpenses();
-                    break;
+                case 4:
+                     Console.WriteLine();
+                     Console.WriteLine("Delete Expense Selected");
+                     exp.DeleteExpenses();
+                break;
 
-                    case 5:
-                        Console.WriteLine();
-                        Console.WriteLine("Total Expense Selected");
-                        exp.TotalExpense();
-                    break;
+                case 5:
+                     Console.WriteLine();
+                     Console.WriteLine("Total Expense Selected");
+                      exp.TotalExpense();
+                break;
 
-                    case 6:
-                        Console.WriteLine();
-                        Console.WriteLine("Monthly Expense Selected");
-                        exp.MonthlyExpense();
-                    break;
+                case 6:
+                     Console.WriteLine();
+                     Console.WriteLine("Monthly Expense Selected");
+                      exp.MonthlyExpense();
+                break;
 
-                    case 7:
-                        Console.WriteLine("Thank you for using Expense Tracker.");
-                        return;
+                case 7:
+                     Console.WriteLine("Thank you for using Expense Tracker.");
+                return;
 
-                    default:
-                        Console.WriteLine("Invalid choice");
-                        break;
+                default:
+                     Console.WriteLine("Invalid choice");
+                 break;
 
-            }
-            
+                }
         }
     }
 }

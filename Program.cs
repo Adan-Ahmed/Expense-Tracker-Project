@@ -56,6 +56,14 @@ class Program
         nextid++;
         
     }
+    public void DisplayExpense(Expense e)
+    {
+        Console.WriteLine($"ID: {e.ID}");
+        Console.WriteLine($"Title: {e.Title}");
+        Console.WriteLine($"Category: {e.Category}");
+        Console.WriteLine($"Amount: {e.Amount:N2}");
+        Console.WriteLine($"Date: {e.Date:dd-MM-yyyy}");
+    }
     public void ViewExpenses() 
     {
         if(expenses.Count == 0) 
@@ -66,11 +74,7 @@ class Program
         
         foreach (Expense e in expenses)
         {
-            Console.WriteLine($"ID: {e.ID}");
-            Console.WriteLine($"Title: {e.Title}");
-            Console.WriteLine($"Category: {e.Category}");
-            Console.WriteLine($"Amount: {e.Amount:N2}");
-            Console.WriteLine($"Date: {e.Date:dd-MM-yyyy}");
+            DisplayExpense(e);
             Console.WriteLine();
         }
     
@@ -90,11 +94,7 @@ class Program
         {
             if(string.Equals(c.Category, category, StringComparison.OrdinalIgnoreCase)) 
             {
-                Console.WriteLine($"ID: {c.ID}");
-                Console.WriteLine($"Title: {c.Title}");
-                Console.WriteLine($"Category: {c.Category}");
-                Console.WriteLine($"Amount: {c.Amount:N2}");
-                Console.WriteLine($"Date: {c.Date:dd-MM-yyyy}");
+                DisplayExpense(c);
                 Console.WriteLine();
                 found = true;
             }
@@ -231,14 +231,14 @@ class Program
             int Choice;
             while (true)
             {
-                Console.WriteLine("Enter your choice: ");
+                Console.WriteLine("Enter your choice: 1 to 7 ");
                 if (int.TryParse(Console.ReadLine(), out Choice))
                 {
-                    if (Choice > 0)
+                    if (Choice >= 1 && Choice >=7)
                     {
                         break;
                     }
-                    Console.WriteLine("Initial Choice number Cannot Be Negativee");
+                    Console.WriteLine("Initial Choice number Cannot Be zero or negative");
                 }
                 Console.WriteLine("Please Enter the valid choice number");
             }

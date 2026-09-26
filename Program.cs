@@ -100,6 +100,38 @@ class Program
             Console.WriteLine("There is no ID");
         }
     }
+    public void TotalExpense()
+    {
+        double total = 0;
+
+
+        foreach(Expense t in expenses)
+        {
+            total += t.Amount;
+        }
+        Console.WriteLine($"Total Amount is {total}");
+
+    }
+    public void MonthlyExpense()
+    {
+        Console.WriteLine("Enter the month" );
+        int month = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
+
+        Console.WriteLine("Enter the year");
+        int year = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
+
+        double Totality = 0;
+        foreach (Expense tot in expenses) 
+        { 
+            if(month == tot.Date.Month && year == tot.Date.Year) 
+            {
+                Totality += tot.Amount;
+            }
+            Console.WriteLine($"Total Monthly expense is {Totality}");
+        }
+    }
     static void Main(string[] args) 
     {
         Program exp = new Program();
@@ -144,10 +176,16 @@ class Program
                     break;
 
                     case 5:
-                        break;
+                        Console.WriteLine();
+                        Console.WriteLine("Total Expense Selected");
+                        exp.TotalExpense();
+                    break;
 
                     case 6:
-                        break;
+                        Console.WriteLine();
+                        Console.WriteLine("Monthly Expense Selected");
+                        exp.MonthlyExpense();
+                    break;
 
                     case 7:
                         Console.WriteLine("Thank you for using Expense Tracker.");

@@ -28,8 +28,26 @@ class Program
         string title = Console.ReadLine();
         Console.WriteLine("Enter the category");
         string category = Console.ReadLine();
-        Console.WriteLine("Enter the Amount");
-        double amount = Convert.ToDouble(Console.ReadLine());
+        
+        double amount;
+        while (true) 
+        {
+            Console.WriteLine("Enter the Amount");
+            if (double.TryParse(Console.ReadLine(), out amount))
+            {
+                if (amount >= 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Initial Balance Cannot Be Negative");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid number for balance");
+            }
+
+        }
+        
         DateTime date = DateTime.Now;
 
         //Create object to call constructor

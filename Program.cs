@@ -17,9 +17,7 @@ class Expense
         Amount = amount;
         Date = date;
     }
-
 }
-
 class main
 {
     public void AddExpense()

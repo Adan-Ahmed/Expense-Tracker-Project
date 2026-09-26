@@ -129,8 +129,8 @@ class Program
             {
                 Totality += tot.Amount;
             }
-            Console.WriteLine($"Total Monthly expense is {Totality}");
         }
+        Console.WriteLine($"Total Monthly expense is {Totality}");
     }
     static void Main(string[] args) 
     {

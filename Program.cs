@@ -86,7 +86,7 @@ class Program
             if(i.ID == id) 
             {
                 foundExpense = i;
-                Console.WriteLine($"Your id is {i.ID}");
+                Console.WriteLine($"Your id is {i.ID} is deleted");
                 idfound = true;
                 break;
             }

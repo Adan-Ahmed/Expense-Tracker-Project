@@ -106,6 +106,11 @@ class Program
     }
     public void DeleteExpenses()
     {
+        if(expenses.Count == 0)
+        {
+            Console.WriteLine("No expenses found.");
+            return;
+        }
         int id;
         while (true) 
         {
@@ -144,9 +149,13 @@ class Program
     }
     public void TotalExpense()
     {
+        if (expenses.Count == 0)
+        {
+            Console.WriteLine("No expenses found.");
+            return;
+        }
+
         double total = 0;
-
-
         foreach(Expense t in expenses)
         {
             total += t.Amount;
@@ -156,6 +165,11 @@ class Program
     }
     public void MonthlyExpense()
     {
+        if (expenses.Count == 0)
+        {
+            Console.WriteLine("No expenses found.");
+            return;
+        }
         Console.WriteLine("Enter the month" );
         int month = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine();

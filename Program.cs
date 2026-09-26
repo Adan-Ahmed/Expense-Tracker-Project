@@ -39,11 +39,11 @@ class Program
                 {
                     break;
                 }
-                Console.WriteLine("Initial Balance Cannot Be Negative");
+                Console.WriteLine("Initial Amount Cannot Be Negative");
             }
             else
             {
-                Console.WriteLine("Please enter a valid number for balance");
+                Console.WriteLine("Please enter a valid number for Amount");
             }
 
         }
@@ -95,8 +95,20 @@ class Program
     }
     public void DeleteExpenses()
     {
-        Console.WriteLine("Enter the Id you want to Delete");
-        int id = Convert.ToInt32(Console.ReadLine());
+        int id;
+        while (true) 
+        {
+            Console.WriteLine("Enter the Id you want to Delete");
+            if(int.TryParse(Console.ReadLine(), out id)) 
+            { 
+                if(id > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Initial ID Cannot Be Negative");
+            }
+            Console.WriteLine("Please enter the Valid Id number");
+        }
         Console.WriteLine();
         Expense foundExpense = null;
         bool idfound = false;

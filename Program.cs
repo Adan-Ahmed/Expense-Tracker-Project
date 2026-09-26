@@ -48,8 +48,6 @@ class Program
     static void Main(string[] args) 
     {
         Program exp = new Program();
-        exp.AddExpenses();
-        exp.ViewExpenses();
         while (true) 
         {
             Console.WriteLine();
@@ -74,9 +72,11 @@ class Program
                 switch (Choice) 
                 {
                     case 1:
+                        exp.AddExpenses();
                         break;
 
                     case 2:
+                        exp.ViewExpenses();
                         break;
 
                     case 3:

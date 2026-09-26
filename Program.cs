@@ -21,10 +21,9 @@ class Program
 {
     
     List<Expense> expenses = new List<Expense>();
+    int nextid = 1;
     public void AddExpenses()
     {
-        Console.WriteLine("Enter the ID");
-        int id = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter the Title");
         string title = Console.ReadLine();
         Console.WriteLine("Enter the category");
@@ -34,8 +33,10 @@ class Program
         DateTime date = DateTime.Now;
 
         //Create object to call constructor
-        Expense expen = new Expense(id, title, category, amount, date);
+        Expense expen = new Expense(nextid,title, category, amount, date);
         expenses.Add(expen);
+        nextid++;
+        
     }
     public void ViewExpenses() 
     {

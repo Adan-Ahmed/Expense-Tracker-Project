@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 
 class Expense
 {
@@ -18,8 +17,10 @@ class Expense
         Date = date;
     }
 }
-class main
+class Program
 {
+    
+    List<Expense> expenses = new List<Expense>();
     public void AddExpense()
     {
         Console.WriteLine("Enter the ID");
@@ -32,18 +33,17 @@ class main
         double amount = Convert.ToDouble(Console.ReadLine());
         DateTime date = DateTime.Today;
 
-        Expense expense = new Expense(1, "Lunch", "Food", 500, date);
-
-    }
-    static void Main(string[] args) 
-    {
-        List<Expense> expenses = new List<Expense>();
-        DateTime date = DateTime.Now;
-        Expense exp = new Expense(1, "Lunch", "Food", 500, date);
-        expenses.Add(exp);
+        //Create object to call constructor
+        Expense expen = new Expense(id, title, category, amount, date);
+        expenses.Add(expen);
         foreach (Expense e in expenses)
         {
             Console.WriteLine($"ID: {e.ID}, Title: {e.Title}, Category: {e.Category}, Amount: {e.Amount}, Date: {e.Date}");
         }
+    }
+    static void Main(string[] args) 
+    {
+        Program exp = new Program();
+        exp.AddExpense();
     }
 }

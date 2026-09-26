@@ -58,6 +58,12 @@ class Program
     }
     public void ViewExpenses() 
     {
+        if(expenses.Count == 0) 
+        { 
+            Console.WriteLine("No expenses found.");
+            return;
+        }
+        
         foreach (Expense e in expenses)
         {
             Console.WriteLine($"ID: {e.ID}");
@@ -71,6 +77,11 @@ class Program
     }
     public void SearchExpense()
     {
+        if (expenses.Count == 0) 
+        {
+            Console.WriteLine("No expenses found");
+            return;
+        }
         Console.WriteLine("Enter the category you want to search");
         string category =  Console.ReadLine();
         Console.WriteLine();

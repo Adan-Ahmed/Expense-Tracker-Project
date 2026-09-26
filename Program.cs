@@ -60,15 +60,9 @@ class Program
             Console.WriteLine("6. Monthly Expenses");
             Console.WriteLine("7. Exit");
 
-            int Choice;
-            while (true) 
-            {
-                Console.WriteLine("Enter your choice: ");
-                if(int.TryParse(Console.ReadLine(), out Choice)) 
-                {
-                    break;
-                }
-                Console.WriteLine("Please Enter Valid Number");
+            Console.WriteLine("Enter your choice: ");
+            int Choice = Convert.ToInt32(Console.ReadLine());
+
                 switch (Choice) 
                 {
                     case 1:
@@ -99,7 +93,6 @@ class Program
                         Console.WriteLine("Invalid choice");
                         break;
 
-                }
             }
             
         }

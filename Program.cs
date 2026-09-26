@@ -121,9 +121,12 @@ class Program
                 {
                     break;
                 }
-                Console.WriteLine("Initial ID Cannot Be Negative");
+                Console.WriteLine("ID must be greater than 0.");
             }
-            Console.WriteLine("Please enter the Valid Id number");
+            else
+            {
+                Console.WriteLine("Please enter the Valid Id number");
+            }
         }
         Console.WriteLine();
         Expense foundExpense = null;
@@ -234,11 +237,11 @@ class Program
                 Console.WriteLine("Enter your choice: 1 to 7 ");
                 if (int.TryParse(Console.ReadLine(), out Choice))
                 {
-                    if (Choice >= 1 && Choice >=7)
+                    if (Choice >= 1 && Choice <=7)
                     {
                         break;
                     }
-                    Console.WriteLine("Initial Choice number Cannot Be zero or negative");
+                    Console.WriteLine("Choice must be between 1 and 7.");
                 }
                 Console.WriteLine("Please Enter the valid choice number");
             }

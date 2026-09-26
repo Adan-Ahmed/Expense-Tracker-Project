@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Expense
 {
@@ -31,7 +32,9 @@ class main
         string category = Console.ReadLine();
         Console.WriteLine("Enter the Amount");
         double amount = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("Date");
+        DateTime date = DateTime.Today;
+
+        Expense expense = new Expense(1, "Lunch", "Food", 500, date);
 
     }
     static void Main(string[] args) 

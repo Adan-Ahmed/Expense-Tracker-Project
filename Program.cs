@@ -136,6 +136,7 @@ class Program
         {
             if(i.ID == id) 
             {
+                foundExpense = i;
                 idfound = true;
                 break;
             }

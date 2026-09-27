@@ -212,6 +212,31 @@ class Program
         }
         return year;
     }
+    public int GetChoice()
+    {
+        int choice;
+
+        while (true)
+        {
+            Console.WriteLine("Enter your choice: 1 to 7");
+
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                if (choice >= 1 && choice <= 7)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Choice must be between 1 and 7.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid choice number.");
+            }
+        }
+
+        return choice;
+    }
     public void ViewExpenses() 
     {
         if(expenses.Count == 0) 
@@ -260,7 +285,9 @@ class Program
                 found = true;
             }
         }
-        if (found == false) 
+        //if (found == false) 
+        //We can used like this
+        if (!found)
         {
             Console.WriteLine("No expense found for that category.");
         }
@@ -399,20 +426,20 @@ class Program
             Console.WriteLine("6. Monthly Expenses");
             Console.WriteLine("7. Exit");
 
-            int choice;
-            while (true)
-            {
-                Console.WriteLine("Enter your choice: 1 to 7 ");
-                if (int.TryParse(Console.ReadLine(), out choice))
-                {
-                    if (choice >= 1 && choice <= 7)
-                    {
-                        break;
-                    }
-                    Console.WriteLine("Choice must be between 1 and 7.");
-                }
-                Console.WriteLine("Please Enter the valid choice number");
-            }
+            int choice = exp.GetChoice();
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter your choice: 1 to 7 ");
+            //    if (int.TryParse(Console.ReadLine(), out choice))
+            //    {
+            //        if (choice >= 1 && choice <= 7)
+            //        {
+            //            break;
+            //        }
+            //        Console.WriteLine("Choice must be between 1 and 7.");
+            //    }
+            //    Console.WriteLine("Please Enter the valid choice number");
+            //}
             switch (choice) 
                 {
                 case 1:
@@ -453,10 +480,6 @@ class Program
                 case 7:
                      Console.WriteLine("Thank you for using Expense Tracker.");
                 return;
-
-                default:
-                     Console.WriteLine("Invalid choice");
-                 break;
 
                 }
         }

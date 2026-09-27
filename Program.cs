@@ -21,28 +21,82 @@ class Program
 {
     
     List<Expense> expenses = new List<Expense>();
-    int nextid = 1;
-    public void AddExpenses()
+    int nextId = 1;
+    public void AddExpense()
     {
-        string title;
-        while (true) 
-        {
-            Console.WriteLine("Enter the Title");
-            title = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(title)) 
-            {
-                Console.WriteLine("Title cannot be empty.");
-            }
-            else 
-            {
-                break;
-            }
-        }
+        string title = GetTitle();
+        //while (true) 
+        //{
+        //    Console.WriteLine("Enter the Title");
+        //    title = Console.ReadLine();
+        //    if (String.IsNullOrWhiteSpace(title)) 
+        //    {
+        //        Console.WriteLine("Title cannot be empty.");
+        //    }
+        //    else 
+        //    {
+        //        break;
+        //    }
+        //}
+        string category = GetCategory();
+        //while (true)
+        //{
+        //    Console.WriteLine("Enter the category");
+        //    category = Console.ReadLine();
+        //    if (String.IsNullOrWhiteSpace(category))
+        //    {
+        //        Console.WriteLine("category cannot be empty.");
+        //    }
+        //    else
+        //    {
+        //        break;
+        //    }
+        //}
+
+        double amount = GetAmount();
+        //while (true) 
+        //{
+        //    Console.WriteLine("Enter the Amount");
+        //    if (double.TryParse(Console.ReadLine(), out amount))
+        //    {
+        //        if (amount > 0)
+        //        {
+        //            break;
+        //        }
+        //        Console.WriteLine("Amount must be greater than 0.");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Please enter a valid number for Amount");
+        //    }
+
+        //}
+        
+        DateTime date = DateTime.Now;
+
+        //Create object to call constructor
+        Expense expen = new Expense(nextId,title, category, amount, date);
+        expenses.Add(expen);
+        nextId++;
+        
+    }
+    public void DisplayExpense(Expense e)
+    {
+        Console.WriteLine($"ID: {e.ID}");
+        Console.WriteLine($"Title: {e.Title}");
+        Console.WriteLine($"Category: {e.Category}");
+        Console.WriteLine($"Amount: {e.Amount:N2}");
+        Console.WriteLine($"Date: {e.Date:dd-MM-yyyy}");
+    }
+
+    public string GetCategory() 
+    {
         string category;
         while (true)
         {
             Console.WriteLine("Enter the category");
             category = Console.ReadLine();
+
             if (String.IsNullOrWhiteSpace(category))
             {
                 Console.WriteLine("category cannot be empty.");
@@ -52,7 +106,28 @@ class Program
                 break;
             }
         }
-        
+        return category;
+    }
+    public string GetTitle()
+    {
+        string title;
+        while (true)
+        {
+            Console.WriteLine("Enter the Title");
+            title = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine("Title cannot be empty.");
+            }
+            else
+            {
+                break;
+            }
+        }
+        return title;
+    }
+    public double GetAmount()
+    {
         double amount;
         while (true) 
         {
@@ -71,22 +146,71 @@ class Program
             }
 
         }
-        
-        DateTime date = DateTime.Now;
-
-        //Create object to call constructor
-        Expense expen = new Expense(nextid,title, category, amount, date);
-        expenses.Add(expen);
-        nextid++;
-        
+        return amount;
     }
-    public void DisplayExpense(Expense e)
+    public int GetID() 
     {
-        Console.WriteLine($"ID: {e.ID}");
-        Console.WriteLine($"Title: {e.Title}");
-        Console.WriteLine($"Category: {e.Category}");
-        Console.WriteLine($"Amount: {e.Amount:N2}");
-        Console.WriteLine($"Date: {e.Date:dd-MM-yyyy}");
+        int id;
+        while (true)
+        {
+            Console.WriteLine("Enter the ID you want to Delete");
+            if (int.TryParse(Console.ReadLine(), out id))
+            {
+                if (id > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("ID must be greater than 0.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter the Valid ID number");
+            }
+        }
+        return id;
+    }
+    public int GetMonth() 
+    {
+        int month;
+        while (true)
+        {
+            Console.WriteLine("Enter the month");
+            if (int.TryParse(Console.ReadLine(), out month))
+            {
+                if (month >= 1 && month <= 12)
+                {
+                    break;
+                }
+                Console.WriteLine("Month must be between 1 and 12.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter the Valid Month number");
+            }
+        }
+        return month;
+    }
+
+    public int GetYear() 
+    {
+        int year;
+        while (true)
+        {
+            Console.WriteLine("Enter the year");
+            if (int.TryParse(Console.ReadLine(), out year))
+            {
+                if (year > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Year must be Greater than 0");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a Valid year.");
+            }
+        }
+        return year;
     }
     public void ViewExpenses() 
     {
@@ -96,9 +220,9 @@ class Program
             return;
         }
         
-        foreach (Expense e in expenses)
+        foreach (Expense expense in expenses)
         {
-            DisplayExpense(e);
+            DisplayExpense(expense);
             Console.WriteLine();
         }
     
@@ -110,27 +234,28 @@ class Program
             Console.WriteLine("No expenses found");
             return;
         }
-        string category;
-        while (true)
-        {
-            Console.WriteLine("Enter the category you want to search");
-            category = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(category))
-            {
-                Console.WriteLine("category cannot be empty.");
-            }
-            else
-            {
-                break;
-            }
-        }
+        //string category;
+        //while (true)
+        //{
+        //    Console.WriteLine("Enter the category you want to search");
+        //    category = Console.ReadLine();
+        //    if (String.IsNullOrWhiteSpace(category))
+        //    {
+        //        Console.WriteLine("Category cannot be empty.");
+        //    }
+        //    else
+        //    {
+        //        break;
+        //    }
+        //}
+        string category = GetCategory();
 
         bool found = false;
-        foreach (Expense c in expenses)
+        foreach (Expense expense in expenses)
         {
-            if(string.Equals(c.Category, category, StringComparison.OrdinalIgnoreCase)) 
+            if(string.Equals(expense.Category, category, StringComparison.OrdinalIgnoreCase)) 
             {
-                DisplayExpense(c);
+                DisplayExpense(expense);
                 Console.WriteLine();
                 found = true;
             }
@@ -140,7 +265,7 @@ class Program
             Console.WriteLine("No expense found for that category.");
         }
     }
-    public void DeleteExpenses()
+    public void DeleteExpense()
     {
         if(expenses.Count == 0)
         {
@@ -148,30 +273,30 @@ class Program
             return;
         }
 
-        int id;
-        while (true) 
-        {
-            Console.WriteLine("Enter the Id you want to Delete");
-            if(int.TryParse(Console.ReadLine(), out id)) 
-            { 
-                if(id > 0)
-                {
-                    break;
-                }
-                Console.WriteLine("ID must be greater than 0.");
-            }
-            else
-            {
-                Console.WriteLine("Please enter the Valid Id number");
-            }
-        }
+        int id = GetID();
+        //while (true) 
+        //{
+        //    Console.WriteLine("Enter the ID you want to Delete");
+        //    if(int.TryParse(Console.ReadLine(), out id)) 
+        //    { 
+        //        if(id > 0)
+        //        {
+        //            break;
+        //        }
+        //        Console.WriteLine("ID must be greater than 0.");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Please enter the Valid ID number");
+        //    }
+        //}
         Console.WriteLine();
         Expense foundExpense = null;
-        foreach(Expense i in expenses)
+        foreach(Expense expense in expenses)
         {
-            if(i.ID == id) 
+            if(expense.ID == id) 
             {
-                foundExpense = i;
+                foundExpense = expense;
                 break;
             }
         }
@@ -182,7 +307,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("No expense found with that Id");
+            Console.WriteLine("No expense found with that ID");
         }
     }
     public void TotalExpense()
@@ -194,9 +319,9 @@ class Program
         }
 
         double total = 0;
-        foreach(Expense t in expenses)
+        foreach(Expense expense in expenses)
         {
-            total += t.Amount;
+            total += expense.Amount;
         }
         Console.WriteLine($"Total Amount is {total:N2}");
 
@@ -209,56 +334,58 @@ class Program
             return;
         }
 
-        int month;
-        while (true)
-        {
-            Console.WriteLine("Enter the month" );
-            if(int.TryParse(Console.ReadLine(), out month))
-            {
-                if(month >= 1 && month <= 12) 
-                {
-                    break;
-                }
-                Console.WriteLine("Month must be between 1 and 12.");
-            }
-            else
-            {
-                Console.WriteLine("Please enter the Valid Month number");
-            }
-        }
+        int month = GetMonth();
+        //while (true)
+        //{
+        //    Console.WriteLine("Enter the month" );
+        //    if(int.TryParse(Console.ReadLine(), out month))
+        //    {
+        //        if(month >= 1 && month <= 12) 
+        //        {
+        //            break;
+        //        }
+        //        Console.WriteLine("Month must be between 1 and 12.");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Please enter the Valid Month number");
+        //    }
+        //}
         Console.WriteLine();
 
-        int year;
-        while (true)
-        {
-            Console.WriteLine("Enter the year");
-            if (int.TryParse(Console.ReadLine(), out year))
-            {
-                if (year > 0)
-                {
-                    break;
-                }
-                Console.WriteLine("Year must be greater than 0");
-            }
-            else 
-            { 
-                Console.WriteLine("Please enter a valid year.");
-            }
-        }
+        int year = GetYear();
+        //while (true)
+        //{
+        //    Console.WriteLine("Enter the year");
+        //    if (int.TryParse(Console.ReadLine(), out year))
+        //    {
+        //        if (year > 0)
+        //        {
+        //            break;
+        //        }
+        //        Console.WriteLine("Year must be Greater than 0");
+        //    }
+        //    else 
+        //    { 
+        //        Console.WriteLine("Please enter a Valid year.");
+        //    }
+        //}
         Console.WriteLine();
 
-        double Totality = 0;
-        foreach (Expense tot in expenses) 
+        double total = 0;
+        foreach (Expense expense in expenses) 
         { 
-            if(month == tot.Date.Month && year == tot.Date.Year) 
+            if(month == expense.Date.Month && year == expense.Date.Year) 
             {
-                Totality += tot.Amount;
+                total += expense.Amount;
             }
         }
-        Console.WriteLine($"Total Monthly expense is {Totality:N2}");
+        Console.WriteLine($"Total Monthly expense is {total:N2}");
     }
+
     static void Main(string[] args) 
     {
+
         Program exp = new Program();
         while (true) 
         {
@@ -272,13 +399,13 @@ class Program
             Console.WriteLine("6. Monthly Expenses");
             Console.WriteLine("7. Exit");
 
-            int Choice;
+            int choice;
             while (true)
             {
                 Console.WriteLine("Enter your choice: 1 to 7 ");
-                if (int.TryParse(Console.ReadLine(), out Choice))
+                if (int.TryParse(Console.ReadLine(), out choice))
                 {
-                    if (Choice >= 1 && Choice <=7)
+                    if (choice >= 1 && choice <= 7)
                     {
                         break;
                     }
@@ -286,11 +413,11 @@ class Program
                 }
                 Console.WriteLine("Please Enter the valid choice number");
             }
-            switch (Choice) 
+            switch (choice) 
                 {
                 case 1:
                     Console.WriteLine("Add Expense Selected");
-                    exp.AddExpenses();
+                    exp.AddExpense();
                 break;
 
                 case 2:
@@ -308,7 +435,7 @@ class Program
                 case 4:
                      Console.WriteLine();
                      Console.WriteLine("Delete Expense Selected");
-                     exp.DeleteExpenses();
+                     exp.DeleteExpense();
                 break;
 
                 case 5:

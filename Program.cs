@@ -39,7 +39,7 @@ class Program
                 {
                     break;
                 }
-                Console.WriteLine("Initial Amount Cannot Be Negative");
+                Console.WriteLine("Amount must be greater than 0.");
             }
             else
             {
@@ -111,6 +111,7 @@ class Program
             Console.WriteLine("No expenses found.");
             return;
         }
+
         int id;
         while (true) 
         {
@@ -135,8 +136,6 @@ class Program
         {
             if(i.ID == id) 
             {
-                foundExpense = i;
-                Console.WriteLine($"Your id is {i.ID} was deleted");
                 idfound = true;
                 break;
             }
@@ -144,6 +143,7 @@ class Program
         if(foundExpense != null)
         {
             expenses.Remove(foundExpense);
+            Console.WriteLine($"Your id is {foundExpense.ID} was deleted");
         }
         if(idfound == false)
         {

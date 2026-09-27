@@ -24,10 +24,34 @@ class Program
     int nextid = 1;
     public void AddExpenses()
     {
-        Console.WriteLine("Enter the Title");
-        string title = Console.ReadLine();
-        Console.WriteLine("Enter the category");
-        string category = Console.ReadLine();
+        string title;
+        while (true) 
+        {
+            Console.WriteLine("Enter the Title");
+            title = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(title)) 
+            {
+                Console.WriteLine("Title cannot be empty.");
+            }
+            else 
+            {
+                break;
+            }
+        }
+        string category;
+        while (true)
+        {
+            Console.WriteLine("Enter the category");
+            category = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(category))
+            {
+                Console.WriteLine("category cannot be empty.");
+            }
+            else
+            {
+                break;
+            }
+        }
         
         double amount;
         while (true) 
@@ -86,9 +110,21 @@ class Program
             Console.WriteLine("No expenses found");
             return;
         }
-        Console.WriteLine("Enter the category you want to search");
-        string category =  Console.ReadLine();
-        Console.WriteLine();
+        string category;
+        while (true)
+        {
+            Console.WriteLine("Enter the category you want to search");
+            category = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(category))
+            {
+                Console.WriteLine("category cannot be empty.");
+            }
+            else
+            {
+                break;
+            }
+        }
+
         bool found = false;
         foreach (Expense c in expenses)
         {
@@ -101,7 +137,7 @@ class Program
         }
         if (found == false) 
         {
-            Console.WriteLine("There is no category");
+            Console.WriteLine("No expense found for that category.");
         }
     }
     public void DeleteExpenses()
@@ -131,24 +167,22 @@ class Program
         }
         Console.WriteLine();
         Expense foundExpense = null;
-        bool idfound = false;
         foreach(Expense i in expenses)
         {
             if(i.ID == id) 
             {
                 foundExpense = i;
-                idfound = true;
                 break;
             }
         }
         if(foundExpense != null)
         {
             expenses.Remove(foundExpense);
-            Console.WriteLine($"Your id is {foundExpense.ID} was deleted");
+            Console.WriteLine($"Expense with ID {foundExpense.ID} was deleted.");
         }
-        if(idfound == false)
+        else
         {
-            Console.WriteLine("There is no ID");
+            Console.WriteLine("No expense found with that Id");
         }
     }
     public void TotalExpense()
@@ -187,7 +221,10 @@ class Program
                 }
                 Console.WriteLine("Month must be between 1 and 12.");
             }
-            Console.WriteLine("Please enter the Valid Month number");
+            else
+            {
+                Console.WriteLine("Please enter the Valid Month number");
+            }
         }
         Console.WriteLine();
 
@@ -203,7 +240,10 @@ class Program
                 }
                 Console.WriteLine("Year must be greater than 0");
             }
-            Console.WriteLine("Please enter a valid year.");
+            else 
+            { 
+                Console.WriteLine("Please enter a valid year.");
+            }
         }
         Console.WriteLine();
 
